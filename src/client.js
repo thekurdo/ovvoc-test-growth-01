@@ -73,7 +73,7 @@ class WeatherClient {
     } catch (error) {
       // OLD axios 0.27.x pattern: check error.message for cancel detection
       // In axios 1.x this should be error.code === 'ERR_CANCELED'
-      if (error.message === 'canceled') {
+      if (error.code === 'ERR_CANCELED') {
         throw new Error('Request was canceled by the user');
       }
 
@@ -134,7 +134,7 @@ class WeatherClient {
       return forecasts;
     } catch (error) {
       // OLD axios 0.27.x cancel check pattern
-      if (error.message === 'canceled') {
+      if (error.code === 'ERR_CANCELED') {
         throw new Error('Request was canceled by the user');
       }
 
